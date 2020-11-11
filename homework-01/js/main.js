@@ -26,7 +26,7 @@ const averageValue = Math.round(fruitsSum * 100) / 100;
 console.log(`Cереднє значення округлене до сотих - ${averageValue}`)
 
 const randomDiscount = Math.ceil(Math.random() * 100);
-const roundedBill = (fruitsSum - (fruitsSum * randomDiscount / 100)).toFixed(2)
+const roundedBill = +(fruitsSum - (fruitsSum * randomDiscount / 100)).toFixed(2)
 console.log(`Рахунок заокруглений до сотих - ${roundedBill}`);
 
 const trueCost = fruitsSum / 2;
@@ -42,6 +42,6 @@ console.log(`Максимальна ціна - ${Math.max(ORANGE, MANGO, AVOKADO
 Cума товарів це не парне число - ${fruitCostWithoutPennies % 2 === 1}
 Решта - ${CUSTOMER_MONEY - fruitsSum}
 Cереднє значення округлене до сотих - ${Math.round(fruitsSum * 100) / 100}
-Рахунок заокруглений до сотих - ${(fruitsSum - (fruitsSum * randomDiscount / 100)).toFixed(2)}
+Рахунок заокруглений до сотих - ${+(fruitsSum - (fruitsSum * randomDiscount / 100)).toFixed(2)}
 Чистий прибуток - ${(fruitsSum / 2) - (fruitsSum * randomDiscount / 100)}
 `)
