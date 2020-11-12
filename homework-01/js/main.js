@@ -1,15 +1,17 @@
-const ORANGE = 15.678, MANGO = 123.965, AVOKADO = 90.2345;
+const orange = 15.678;
+const mango = 123.965;
+const avokado = 90.2345;
 
-const maxNumber = Math.max(ORANGE, MANGO, AVOKADO);
+const maxNumber = Math.max(orange, mango, avokado);
 console.log(`Максимальна ціна - ${maxNumber}`)
 
-const minNumber = Math.min(ORANGE, MANGO, AVOKADO);
+const minNumber = Math.min(orange, mango, avokado);
 console.log(`Мінімальна ціна - ${minNumber}`) 
 
-const fruitsSum = ORANGE + MANGO + AVOKADO;
+const fruitsSum = orange + mango + avokado;
 console.log(`Загальна сумма фруктів - ${fruitsSum}`)
 
-const fruitCostWithoutPennies = Math.floor(ORANGE) + Math.floor(MANGO) + Math.floor(AVOKADO);
+const fruitCostWithoutPennies = Math.floor(orange) + Math.floor(mango) + Math.floor(avokado);
 console.log(`Загальна сумма фруктів без копійок - ${fruitCostWithoutPennies}`)
 
 const roundedSum = Math.round(fruitCostWithoutPennies / 100) * 100;
@@ -22,10 +24,12 @@ const CUSTOMER_MONEY = 500;
 const changeMoney = CUSTOMER_MONEY - fruitsSum;
 console.log(`Решта - ${changeMoney}`)
 
-const averageValue = Math.round(fruitsSum * 100) / 100;
+const averageValue = +(fruitsSum / 3).toFixed(2);
 console.log(`Cереднє значення округлене до сотих - ${averageValue}`)
 
-const randomDiscount = Math.ceil(Math.random() * 100);
+const minDiscount = 0;
+const maxDiscount = 100;
+const randomDiscount = Math.floor(Math.random() * (maxDiscount - minDiscount + 1)) + minDiscount;
 const roundedBill = +(fruitsSum - (fruitsSum * randomDiscount / 100)).toFixed(2)
 console.log(`Рахунок заокруглений до сотих - ${roundedBill}`);
 
@@ -34,14 +38,14 @@ const profit = trueCost - (fruitsSum * randomDiscount / 100);
 console.log(`Чистий прибуток - ${profit}`);
 
 
-console.log(`Максимальна ціна - ${Math.max(ORANGE, MANGO, AVOKADO)}
-Мінімальна ціна - ${Math.min(ORANGE, MANGO, AVOKADO)}
-Загальна сумма фруктів - ${ORANGE + MANGO + AVOKADO}
-Загальна сумма фруктів без копійок - ${Math.floor(ORANGE) + Math.floor(MANGO) + Math.floor(AVOKADO)}
+console.log(`Максимальна ціна - ${maxNumber}
+Мінімальна ціна - ${minNumber}
+Загальна сумма фруктів - ${fruitsSum}
+Загальна сумма фруктів без копійок - ${fruitCostWithoutPennies}
 Сума товарів округлена до сотень - ${roundedSum}
-Cума товарів це не парне число - ${fruitCostWithoutPennies % 2 === 1}
-Решта - ${CUSTOMER_MONEY - fruitsSum}
-Cереднє значення округлене до сотих - ${Math.round(fruitsSum * 100) / 100}
-Рахунок заокруглений до сотих - ${+(fruitsSum - (fruitsSum * randomDiscount / 100)).toFixed(2)}
-Чистий прибуток - ${(fruitsSum / 2) - (fruitsSum * randomDiscount / 100)}
+Cума товарів це не парне число - ${isOdd}
+Решта - ${changeMoney}
+Cереднє значення округлене до сотих - ${averageValue}
+Рахунок заокруглений до сотих - ${roundedBill}
+Чистий прибуток - ${profit}
 `)
