@@ -1,25 +1,40 @@
+const minNumMessage = 'Введіть початкове число діапазону';
+const maxNumMessage = 'Введіть кінцеве число діапазону';
 let minNum;
 let maxNum;
 
-do {
-    minNum = Math.floor(prompt('Введіть початкове число діапазону', '0'));
-    maxNum = Math.floor(prompt('Введіть кінцеве число діапазону', '0'));
-} while (!Number.isInteger(minNum) || !Number.isInteger(maxNum) || minNum <= 0 || minNum > maxNum)
+function askNum(varName, message){
+    do {
+        varName = Math.floor(prompt(`${message}`, '0'))
+    } while (!Number.isInteger(varName))
 
-const skipEvenNum = confirm('Чи хочете Ви пропускати парні числа?')
-let sum = 0;
-if(skipEvenNum) {
-    for(let i = minNum; i <= maxNum; i++){
-        if(i%2 === 0) {
-            sum += 0
-        } else {
-            sum += i
-        }
-    }
-} else {
-    for(let i = minNum; i <= maxNum; i++){
-        sum += i;
-    }
+    return varName;
 }
 
-console.log(sum)
+function calcSum(firstNum, secondNum, skipEvenNum) {
+    let sum = 0;
+    
+    for(let i = firstNum; i <= secondNum; i++){
+        if(skipEvenNum && i%2 === 0){
+            continue;
+        }
+        sum += i;
+    }
+    
+    return sum;
+}
+
+function checkData(){
+    minNum = askNum(minNum, minNumMessage);
+    maxNum = askNum(maxNum, maxNumMessage);
+
+    if(minNum > maxNum && !!Math.sign(minNum) && !!Math.sign(maxNum)){
+        alert('Початок діапазону не може бути менший за кінець.')
+        checkData();
+    }
+
+    const skipEvenNum = confirm('Чи хочете Ви пропускати парні числа?')
+    console.log(calcSum(minNum, maxNum, skipEvenNum));
+}
+
+checkData();
