@@ -3,7 +3,7 @@ const getMaxDigit = number => {
     let maxDigit = 0;
 
     splitedNumber.forEach(digit => {
-        if(digit > maxDigit){
+        if(+digit > maxDigit){
             maxDigit = digit;
         }
     });
