@@ -54,5 +54,3 @@ console.log(studentsMarks)
 
 const marksForPairs = putMarksForPairs(pairsByThemes)
 console.log(marksForPairs)
-
-

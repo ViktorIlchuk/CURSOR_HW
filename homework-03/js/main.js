@@ -83,10 +83,9 @@ const deleteLetters = (deleteLetter, string) => {
 
     const splitedString = string.split('');
     for(let letter of splitedString){
-        if(letter === deleteLetter){
-            continue;
+        if(letter !== deleteLetter){
+            formatedString += letter;
         }
-        formatedString += letter;
     }
 
     return formatedString;
