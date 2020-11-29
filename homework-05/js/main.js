@@ -5,19 +5,18 @@ return [...new Array(length)]
 
 
 const getModa = function(...numbers) {
-    const modaNumbers = {};
-    let mostRepeated = 0; 
+    const modaNumbers = {}; 
     let moda = 0;
-    const arrOfArguments = [...numbers];
-    arrOfArguments.map(number => {
-        (number in modaNumbers) ? 
-        modaNumbers[number] += 1 : 
-        modaNumbers[number] = 0;
-        if(mostRepeated < modaNumbers[number]) {
-            mostRepeated = modaNumbers[number]
+    
+    [...numbers].map(number => {
+        (number in modaNumbers) ? modaNumbers[number] += 1 : modaNumbers[number] = 1;
+    })
+
+    for(let number in modaNumbers) {
+        if(modaNumbers[number] > moda){
             moda = number;
         }
-    })
+    }
     return moda;
 }
 
@@ -88,9 +87,20 @@ const divideByThree = function(word) {
         .split(',')
 }
 
+const generateCombinations = function(word) {
+    if(word.length <= 2) return word.length === 2 ? [word, word[1] + word[0]] : [word];
 
+    return word.split('')
+    .reduce(
+        (acc, letter, i) => {
+            return acc
+                .concat(generateCombinations(word.slice(0, i) + word.slice(i + 1))
+                .map(val => letter + val)
+                )
+        },[]);
+}
 
-const randomArray = getRandomArray(9,0,10)
+const randomArray = getRandomArray(10,1,10)
 console.log("randomArray:", randomArray)
 
 console.log("moda:", getModa(...randomArray))
@@ -108,3 +118,5 @@ console.log("DividedByFive:" , getDividedByFive(...randomArray))
 console.log("replaceBadWords:", replaceBadWords('Holy shit!'))
 
 console.log("divideByThree:", divideByThree('jalcjzx nczx cnzjcx'))
+
+console.log("generateCombinations", generateCombinations('123'))
