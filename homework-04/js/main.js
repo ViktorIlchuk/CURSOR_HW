@@ -1,20 +1,20 @@
-const students = ["Олександр", "Ігор", "Олена", "Іра", "Олексій", "Світлана"];
+const students = ["Олександр", "Олена", "Ігор", "Іра", "Олексій", "Світлана"];
 const themes = ["Диференційне рівняння", "Теорія автоматів", "Алгоритми і структури даних"];
 const marks = [4, 5, 5, 3, 4, 5];
 
 const getPairs = students => {
-    const pairs = [
-        [students[0], students[2]], 
-        [students[1], students[3]], 
-        [students[4], students[5]]
-    ];
-
-    return pairs;
+    const pairs = [];
+    for(let i = 0; i < students.length; i++) {
+        if(i % 2){
+            pairs.push([students[i], students[i - 1]])
+        }
+    }
+    return pairs
 }
 
 const makePairsByThemes = (pairs, themes) => {
     const pairsByThemes = [];
-    pairs.forEach((pair, index) => {
+    pairs.map((pair, index) => {
         const getherPair = [`${pair[0]} і ${pair[1]}`, themes[index]]
         pairsByThemes.push(getherPair)
     });
