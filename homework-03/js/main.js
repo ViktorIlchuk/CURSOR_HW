@@ -1,36 +1,30 @@
-const getMaxDigit = number => {
-    const splitedNumber = number.toString().split('');
-    let maxDigit = 0;
-
-    splitedNumber.forEach(digit => {
-        if(+digit > maxDigit){
-            maxDigit = digit;
-        }
-    });
-
-    return maxDigit;   
-};
+const getMaxDigit = (number) => Math.max(... Array.from(String(number)).map((item) => parseInt(item)))
 
 const powNumber = (number, power) => {
     let result = number;
 
-    for(let i = 1; i < power; i++){
-        result *=  number;
+    if(number !== 0 && power === 0){
+        result = 0;
+    }else if(number !== 0 && power < 0){
+        let denominator = number;
+        for(let i = 1; i < Math.abs(power); i++){
+            denominator *= number 
+        }
+        result = 1 / denominator;
+    }else{
+        for(let i = 1; i < power; i++){
+            result *=  number;
+        }
     }
-
+    
     return result;
 };
 
-const formatName = name => {
-    const formatedName = name[0].toUpperCase() + name.substring(1).toLowerCase();    
-    return formatedName;
-};
+const formatName = name => name[0].toUpperCase() + name.substring(1).toLowerCase();    
 
 const countClearProfit = function(salary, ...taxes){
     let totalTax = taxes.reduce((total, current) => total + current)
-    const clearProfit = salary / 100 * (100 - totalTax) ;
-    
-    return clearProfit;
+    return salary / 100 * (100 - totalTax);
 };
 
 const getRandomNumber = (startDiapason, endDiapason) => {
@@ -67,16 +61,8 @@ const convertCurrency = (currency) => {
     return result
 }
 
-const getRandomPassword = (passwordLength = 8) => {
-    const numbers = '0123456789';
-    let password = '';
-    
-    for(let i = 0; i < passwordLength; i++){
-        password += numbers.charAt(Math.floor(Math.random() * numbers.length));
-    }
+const getRandomPassword = (passwordLength = 8) => Array.from({length: passwordLength}).map(() => Math.floor(Math.random() * 10)).join('');
 
-    return password;
-}
 
 const deleteLetters = (deleteLetter, string) => {
     let formatedString = '';
@@ -112,7 +98,7 @@ const deleteDuplicateLetter = string => {
 
 document.writeln(`
 <div>Функція №1: ${getMaxDigit(1236)}</div>
-<div>Функція №2: ${powNumber(2,4)}</div>
+<div>Функція №2: ${powNumber(4,-2)}</div>
 <div>Функція №3: ${formatName('вЛАД')}</div>
 <div>Функція №4: ${countClearProfit(1000, 18, 1.5)}</div>
 <div>Функція №5: ${getRandomNumber(1, 10)}</div>
