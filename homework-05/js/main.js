@@ -1,8 +1,5 @@
-const getRandomArray = (length, min, max) => {
-return [...new Array(length)]
+const getRandomArray = (length, min, max) => [...new Array(length)]
     .map(() => Math.floor(Math.random() * (max - min + 1) + min))
-}
-
 
 const getModa = function(...numbers) {
     const modaNumbers = {}; 
@@ -22,9 +19,7 @@ const getModa = function(...numbers) {
 
 const getAverage = function(...numbers) {
     const arrOfArguments = [...numbers];
-    const sum = arrOfArguments.reduce((sum, number) => {
-       return sum += number
-    })
+    const sum = arrOfArguments.reduce((sum, number) => sum += number)
 
     return sum / arrOfArguments.length;
 }
@@ -43,18 +38,15 @@ const getMedian = function(...numbers){
     return result;
 }
 
-const filterEvenNumbers = function(...numbers) {
-    return [...numbers].filter(number => number % 2 === 1)
-}
+const filterEvenNumbers = (...numbers) => [...numbers]
+    .filter(number => number % 2 === 1);
 
-const countPositiveNumbers = function(...numbers) {
-    return [...numbers].filter(numder => numder > 0).length
-    
-}
+const countPositiveNumbers = (...numbers) => [...numbers]
+    .filter(numder => numder > 0).length;
 
-const getDividedByFive = function(...numbers) {
-    return [...numbers].filter(number => number !== 0 && number % 5 === 0)
-}
+const getDividedByFive = (...numbers) => [...numbers]
+    .filter(number => number !== 0 && number % 5 === 0)
+
 
 const replaceBadWords = function(string) {
     const badWords = ['shit', 'fuck'];
@@ -100,23 +92,23 @@ const generateCombinations = function(word) {
         },[]);
 }
 
-const randomArray = getRandomArray(10,1,10)
-console.log("randomArray:", randomArray)
+// const randomArray = getRandomArray(10,1,10)
+// console.log("randomArray:", randomArray)
 
-console.log("moda:", getModa(...randomArray))
+// console.log("moda:", getModa(...randomArray))
 
-console.log("average value:", getAverage(...randomArray))
+// console.log("average value:", getAverage(...randomArray))
 
-console.log("median:", getMedian(...randomArray));
+// console.log("median:", getMedian(...randomArray));
 
-console.log("EvenNumbers:", filterEvenNumbers(...randomArray))
+// console.log("EvenNumbers:", filterEvenNumbers(...randomArray))
 
-console.log("PositiveNumbers", countPositiveNumbers(-10, 10, 7, 10, 4, 6, 0, -6, 9))
+// console.log("PositiveNumbers", countPositiveNumbers(-10, 10, 7, 10, 4, 6, 0, -6, 9))
 
-console.log("DividedByFive:" , getDividedByFive(...randomArray))
+// console.log("DividedByFive:" , getDividedByFive(...randomArray))
 
-console.log("replaceBadWords:", replaceBadWords('Holy shit!'))
+// console.log("replaceBadWords:", replaceBadWords('Holy shit!'))
 
-console.log("divideByThree:", divideByThree('jalcjzx nczx cnzjcx'))
+// console.log("divideByThree:", divideByThree('jalcjzx nczx cnzjcx'))
 
-console.log("generateCombinations", generateCombinations('123'))
+// console.log("generateCombinations", generateCombinations('123'))
