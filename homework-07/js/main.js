@@ -26,7 +26,7 @@ const getMySalary = function(country) {
             salary,
             taxes,
             profit
-        }), 2000)
+        }), 10000)
     }).call(country)
 }
 
