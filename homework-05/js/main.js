@@ -6,7 +6,7 @@ const getModa = function(...numbers) {
     let moda = 0;
     
     [...numbers].map(number => {
-        (number in modaNumbers) ? modaNumbers[number] += 1 : modaNumbers[number] = 1;
+        (number in modaNumbers) ? modaNumbers[number] + 1 : 1;
     })
 
     for(let number in modaNumbers) {

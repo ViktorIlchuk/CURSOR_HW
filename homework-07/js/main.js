@@ -11,7 +11,7 @@ const getMiddleTaxes = function() {
 }
 
 const getTotalTaxes = function() {
-    return this.tax * this.middleSalary * this.vacancies
+    return getMiddleTaxes.call(this) * this.vacancies
 }
 
 const getMySalary = function(country) {
