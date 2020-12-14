@@ -1,0 +1,11 @@
+body{
+    background-image: url(../img/savana.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.root{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
