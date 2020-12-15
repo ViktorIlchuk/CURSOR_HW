@@ -1,11 +1,31 @@
 body{
-    background-image: url(../img/savana.jpg);
+    background-image: url(../img/guitar.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    
 }
 
 .root{
+    width: 14vw;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: -1%;
+    float: right;
+}
+.string{
+    width: 2.5vw;
+    height: 2.5vw;
+    margin-top: 11.5vw;
+    margin-left: 1.5vw;
+    border-radius: 50%;
+    border: 1px solid #484848;
+    text-align: center;
+    color:black;
+    font-size: 2vw;
+}
+
+.active{
+    box-shadow: 0px 0px 15px 2px #faf571;
+    background-color: #484848;
+    color: white;
 }

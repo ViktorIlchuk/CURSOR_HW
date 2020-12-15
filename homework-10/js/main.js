@@ -1,27 +1,30 @@
-const animals = ['elephant', 'hyena', 'lion', 'jaguar', 'panther', 'zebra'];
-const root = document.querySelector('.root')
+const root = document.querySelector('.root');
+const keys = ['a', 's', 'd', 'h', 'g', 'f'];
 
-const renderImg = function() {
-    animals.forEach(animal => {
-        const img = document.createElement('img');
-        const voice = document.createElement('audio');
-        
-        img.classList.add(animal);
-        img.src = `./img/${animal}.jpg`;
-        img.style.height = '20vh';
-
-        voice.src = `./audio/${animal}.mp3`;
-        voice.classList.add(`${animal}Voice`);
-
-        root.append(img);
-        root.append(voice);
+const renderStrings = function() {
+    keys.forEach( key => {
+        const div = document.createElement('div')
+        div.classList.add(key ,'string')
+        div.innerHTML += `${key}`;
+        root.append(div)
     })
 }
 
-root.addEventListener('click', event => {
-    const animalVoice = document.querySelector(`.${event.target.classList[0]}Voice`);
-    animalVoice.play();
+document.addEventListener('keydown', event => {
+    if(keys.indexOf(event.key) >= 0) {
+        document.querySelector(`#${event.key}`).play();
+        const currentString = document.querySelector(`.${event.key}`)
+        currentString.classList.add('active')
+    }
 })
-    
-renderImg()
+
+document.addEventListener('keyup', event => {
+    const currentAudio = document.querySelector(`#${event.key}`)
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+    const currentString = document.querySelector(`.${event.key}`)
+    currentString.classList.remove('active')
+})
+
+renderStrings()
 
