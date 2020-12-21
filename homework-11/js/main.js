@@ -1,5 +1,5 @@
 const getRandomChinese = async (length) => {
-    const delay = 1000;
+    const delay = 50;
     const numAmount = 5;
     let result = ''
 
