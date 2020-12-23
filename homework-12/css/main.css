@@ -1,0 +1,18 @@
+.heroes-block{
+    display: flex;
+}
+
+.heroes-container{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.hero-card{
+    border: 2px solid black;
+    width: 30%;
+}
+
+.invisible{
+    display: none;
+}
