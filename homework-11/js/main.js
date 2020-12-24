@@ -1,27 +1,32 @@
-const getRandomChinese = async (length) => {
-    const delay = 50;
-    const numAmount = 5;
-    let result = ''
-
-    const hieroglyphDelay = (ms) => new Promise((resolve) => {
-        setInterval(() => resolve(), ms)
-    })
-
-    const makeHieroglyph = () => {
-        const sign = Date.now().toString().slice(-numAmount)
-        return result += String.fromCharCode(sign)
-    }
-   
-    while(length > 0) {
-        await hieroglyphDelay(delay)
-        makeHieroglyph()         
-        length--
-    }
-    return result;
+const createChineseChar = () => {
+    const timeStamp = Date.now().toString();
+    const charCode = timeStamp.substr(timeStamp.length - 5);
+    
+    return String.fromCharCode(charCode);
 }
 
-getRandomChinese(4)
-    .then((res) => console.log(res))
+const wait = ms => new Promise( resolve => setInterval(resolve, ms));
+    
+const getRandomChinese = async (length) => {
+    const array = Array.from({length});
+
+    const charArray = await Promise.all(
+        array.map(async (el, index) => {
+            const creationTime = 50;
+            
+            await wait(creationTime * index);
+            const char = createChineseChar();
+            
+            return char;
+        })
+    )
+
+    const str = charArray.join('')
+
+    return str;
+};
+
+getRandomChinese(4).then(el => console.log(el));
 
 
 
