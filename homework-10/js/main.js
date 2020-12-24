@@ -1,30 +1,59 @@
 const root = document.querySelector('.root');
-const keys = ['a', 's', 'd', 'h', 'g', 'f'];
-
-const renderStrings = function() {
-    keys.forEach( key => {
-        const div = document.createElement('div')
-        div.classList.add(key ,'string')
-        div.innerHTML += `${key}`;
-        root.append(div)
-    })
-}
-
-document.addEventListener('keydown', event => {
-    if(keys.indexOf(event.key) >= 0) {
-        document.querySelector(`#${event.key}`).play();
-        const currentString = document.querySelector(`.${event.key}`)
-        currentString.classList.add('active')
+const stringsList = [
+    {
+        name: 'A',
+        audio: new Audio('audio/Low_E.mp3'),
+        keyCode: 65
+    },
+    {
+        name: 'S',
+        audio: new Audio('audio/A.mp3'),
+        keyCode: 83
+    },
+    {
+        name: 'D',
+        audio: new Audio('audio/D.mp3'),
+        keyCode: 68
+    },
+    {
+        name: 'H',
+        audio: new Audio('audio/High_E.mp3'),
+        keyCode: 72
+    },
+    {
+        name: 'G',
+        audio: new Audio('audio/B.mp3'),
+        keyCode: 71
+    },
+    {
+        name: 'F',
+        audio: new Audio('audio/G.mp3'),
+        keyCode: 70
     }
-})
+];
 
-document.addEventListener('keyup', event => {
-    const currentAudio = document.querySelector(`#${event.key}`)
-    currentAudio.pause();
-    currentAudio.currentTime = 0;
-    const currentString = document.querySelector(`.${event.key}`)
-    currentString.classList.remove('active')
-})
+stringsList.forEach(el => {
+    const button = document.createElement('button');
+    button.innerHTML = el.name;
+    button.classList.add('string');
 
-renderStrings()
+    button.onclick = () => {
+        button.classList.add('active')
+        el.audio.currentTime = 0;
+        el.audio.play();
+    };
+    
+    document.addEventListener('mouseup', () => button.classList.remove('active'));
 
+    document.addEventListener('keydown', event => {
+        if(event.keyCode === el.keyCode) {
+            el.audio.currentTime = 0;
+            el.audio.play();
+            button.classList.add('active');
+        };
+    });
+
+    document.addEventListener('keyup', () => button.classList.remove('active'))
+
+    root.append(button);
+});
