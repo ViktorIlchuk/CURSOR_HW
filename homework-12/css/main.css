@@ -1,18 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.section-header {
+    text-align: center;
+    color: white;
+    font-size: 35px;
+}
+
 .heroes-block{
     display: flex;
 }
 
 .heroes-container{
+    margin: 0 auto;
+    width: 80%;
+    background-color: #000000b3;  
+    text-align: center; 
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .hero-card{
-    border: 2px solid black;
+    text-align: left;
+    font-size: 16px;
+    font-weight: lighter;
+    color: white;
+    margin: 2px;
     width: 30%;
 }
 
 .invisible{
     display: none;
 }
+
+.header{
+    background-color: black;
+}
+
+.header .header-logo{
+    height: 10vh;
+}
+
+.heroes, .planets{
+    background-image: url("../images/background.jpg");
+    height: 90vh;
+    width: 100vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.planets{
+    background-image: url("../images/space.jpg");
+    color: white;
+    text-align: center;
+    padding-top: 20vh;
+    font-size: 20px;
+}
+
+.planets .section-header {
+    font-size: 40px;
+}
+
+.planets .planet {   
+    margin: 8px auto;
+    width: 25%;
+    background-color: rgba(255,255,255, .3);
+}
+
+.redirect{
+    width: 25%;
+    height: 25px;
+    background-color: lightskyblue;
+    border: none;
+    color:inherit;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.movie-number , .show-heroes{
+    box-sizing: border-box;
+    width: 15%;
+    height: 20px;
+}
+

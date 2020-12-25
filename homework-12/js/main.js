@@ -5,17 +5,14 @@ const showHeroes = document.querySelector('.show-heroes');
 const movieNum = document.querySelector('.movie-number');
 const planetsContainer = document.querySelector('.planets-container');
 
-const data = {
-    heroesData: []
-};
 let showCards = false;
 
 const renderInfo = data => {
     const heroCard = document.createElement('div')
     heroCard.classList.add('hero-card')
-    heroCard.innerHTML += `Name: ${data.name}<br/>
-    Birth year: ${data.birthYear}<br/>
-    Gender: ${data.gender}.`
+    heroCard.innerHTML += `Name: ${data.name}. 
+    Birth year: ${data.birth_year}. 
+    Gender: ${data.gender}.<br/>`
     heroesContainer.append(heroCard);
 }
 
@@ -26,25 +23,16 @@ const renderPlanets = data => {
     planetsContainer.append(planet);
 }
 
-showHeroes.addEventListener('click', async () => {   
-    if(movieNum.value > 0 && movieNum.value <= 6){
-        data.heroesData = [];       
+showHeroes.addEventListener('click', async () => {  
+    if(movieNum.value > 0 && movieNum.value <= 6){      
         heroesContainer.innerHTML = '';
         let charactersUrl;
         await axios.get(`${BASEURL}films/${movieNum.value}/`)
-        .then(res => {
-            charactersUrl = res.data.characters;
-        });
-        const characters = await Promise.all(charactersUrl.map(url => axios.get(url)));
-        characters.forEach(character => {
-            data.heroesData.push({
-                name: character.data.name,
-                birthYear: character.data.birth_year,
-                gender: character.data.gender
-            });
-        });
-        
-        data.heroesData.forEach((heroData) => renderInfo(heroData));            
+        .then(async res => {
+            const characters = await Promise.all(res.data.characters.map(url => axios.get(url)));
+            console.log(characters)
+            characters.forEach(character => renderInfo(character.data));
+        });          
     } else {
         alert('You wrote the wrong number of movie.');
     }
@@ -61,8 +49,3 @@ showHeroes.addEventListener('click', async () => {
 const redirectBtn = document.querySelector('.redirect')
 
 redirectBtn.addEventListener('click', () => window.location.href = 'planets.html')
-
-
-
-    
-
