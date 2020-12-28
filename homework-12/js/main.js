@@ -1,11 +1,8 @@
 const BASEURL = 'https://swapi.dev/api/';
-
 const heroesContainer = document.querySelector('.heroes-container');
 const showHeroes = document.querySelector('.show-heroes');
 const movieNum = document.querySelector('.movie-number');
 const planetsContainer = document.querySelector('.planets-container');
-
-let showCards = false;
 
 const renderInfo = data => {
     const heroCard = document.createElement('div')
@@ -23,27 +20,21 @@ const renderPlanets = data => {
     planetsContainer.append(planet);
 }
 
-showHeroes.addEventListener('click', async () => {  
-    if(movieNum.value > 0 && movieNum.value <= 6){      
-        heroesContainer.innerHTML = '';
-        let charactersUrl;
-        await axios.get(`${BASEURL}films/${movieNum.value}/`)
-        .then(async res => {
-            const characters = await Promise.all(res.data.characters.map(url => axios.get(url)));
-            console.log(characters)
-            characters.forEach(character => renderInfo(character.data));
-        });          
+showHeroes.addEventListener('click', async () => { 
+    const movieAmount = 6; 
+    if(movieNum.value > 0 && movieNum.value <= movieAmount){      
+        heroesContainer.innerHTML = '';        
+        const response = await axios.get(`${BASEURL}films/${movieNum.value}/`)       
+        const characters = await Promise.all(response.data.characters.map(url => axios.get(url)));
+            characters.forEach(character => renderInfo(character.data));          
     } else {
         alert('You wrote the wrong number of movie.');
     }
 });
 
 (async () => {
-    let planets;
-    await axios.get(`${BASEURL}planets/`)
-        .then(res => planets = res.data.results)
-    planets.forEach(p => renderPlanets(p))
-    localStorage.setItem('planets', JSON.stringify(planets))
+    const response = await axios.get(`${BASEURL}planets/`)
+    response.data.results.forEach(p => renderPlanets(p))
 })();
 
 const redirectBtn = document.querySelector('.redirect')
