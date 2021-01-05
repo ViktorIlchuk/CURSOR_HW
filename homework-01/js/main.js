@@ -2,6 +2,11 @@ const orange = 15.678;
 const mango = 123.965;
 const avokado = 90.2345;
 
+export const getMaxCoast = (orange, mango, avokado) => {
+    const maxNumber = Math.max(orange, mango, avokado);
+    console.log(`Максимальна ціна - ${maxNumber}`)
+}
+
 const maxNumber = Math.max(orange, mango, avokado);
 console.log(`Максимальна ціна - ${maxNumber}`)
 
