@@ -1,0 +1,52 @@
+.Post{
+    display: flex;
+    align-items: flex-start;
+    background-color: rgb(14, 24, 31);
+    color: white;
+    width: 60%;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.authorInfo{
+    display: flex;
+}
+
+.authorInfo > *{
+    margin-top: 0;
+    margin-right: 5px;
+}
+
+.active{
+    width: 15px;
+    height: 15px;
+}
+
+.nickName,
+.postDate{
+    color: grey;
+}
+
+.authorName{
+    font-weight: bold;
+}
+
+.avatar{
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+.postText{
+    margin: 0;
+}
+
+.postImage{
+    border-radius: 20px;
+    width: 97%;
+    margin-top: 15px;
+}
+
